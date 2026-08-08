@@ -2,6 +2,8 @@
 
 A recreation of the [Accredian Enterprise](https://enterprise.accredian.com/) B2B landing page, built as a Full Stack Developer Intern assignment. Next.js 16 (App Router), TypeScript, and Tailwind CSS, with a bonus lead-capture form backed by a Next.js API route.
 
+**Live demo:** [https://accredian-clone-omega-lake.vercel.app/](https://accredian-clone-omega-lake.vercel.app/)
+
 ## 1. Setup Instructions
 
 **Requirements:** Node.js 18.18+ and npm.
@@ -34,7 +36,7 @@ npm run start
 - **Structure:** App Router with a `src/` directory. Route-level code lives in `src/app`, presentational sections in `src/components`, reusable primitives (`Button`, `Container`, `Card`, `Badge`, `SectionHeading`, `Icon`, `AnimateIn`) in `src/components/ui`, and shared types/constants/validation/API helpers in `src/lib`.
 - **Composition over duplication:** every section (Hero, Programs, Testimonials, etc.) is built from the same handful of UI primitives instead of repeating Tailwind utility strings, so spacing, color, and typography stay consistent without a component library.
 - **Data-driven content:** copy for nav links, programs, value props, testimonials, and stats lives in `src/lib/constants.ts` as typed arrays, so sections are thin render layers over data rather than hardcoded JSX.
-- **Single-page navigation:** the Navbar's links and CTA buttons are in-page anchors (`#programs`, `#why-us`, `#testimonials`, `#contact`, etc.) with `scroll-behavior: smooth` set globally, so there's no client-side routing to manage for what is fundamentally a one-page marketing site.
+- **Single-page navigation:** the Navbar's links and CTA buttons are in-page anchors (`#programs`, `#why-choose-us`, `#testimonials`, `#resources`, `#contact`, etc.) with `scroll-behavior: smooth` set globally, so there's no client-side routing to manage for what is fundamentally a one-page marketing site.
 - **Lead capture:** `LeadForm` is a client component with its own validation state; `src/lib/validation.ts` is shared between the client (inline field errors) and the `/api/lead` route (server-side re-validation), so the two never drift out of sync. Submissions are kept in an in-memory array and best-effort appended to `data/leads.json` for local inspection — see the improvements section below for what a production version would use instead.
 - **Motion:** a single `AnimateIn` client wrapper (Framer Motion `whileInView`) is reused across sections for scroll-triggered fade-ups, plus Tailwind transition utilities for hover states on cards, buttons, and links — kept subtle and consistent rather than section-specific one-offs.
 
@@ -71,6 +73,10 @@ Claude Code was used to scaffold the entire Next.js project (App Router, TypeScr
 - **E2E tests:** add Playwright coverage for the lead form's happy path and validation states, and a visual regression check for the responsive breakpoints.
 
 ## Deployment (Vercel)
+
+This project is deployed at **[https://accredian-clone-omega-lake.vercel.app/](https://accredian-clone-omega-lake.vercel.app/)**, built straight from the `main` branch of this repo with zero config changes.
+
+To deploy your own copy:
 
 **Option A — Vercel CLI:**
 
