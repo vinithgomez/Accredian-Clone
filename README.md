@@ -42,7 +42,22 @@ npm run start
 
 Claude Code was used to scaffold the entire Next.js project (App Router, TypeScript, Tailwind, ESLint via `create-next-app`), generate the folder structure (`src/components`, `src/components/ui`, `src/lib`), and build out all component boilerplate — the Navbar (including the mobile slide-in menu), Footer, Hero, Trusted-By logo strip, Why Choose Us, Programs, How It Works, Testimonials, Stats, final CTA banner, and the Lead Capture form. It also built the `/api/lead` Next.js API route (validation, in-memory + JSON-file storage), the shared TypeScript types in `src/lib/types.ts`, and wrote this README. All copy (headlines, program descriptions, testimonials, stats) is original/paraphrased placeholder content, not scraped from the live site, since no pixel-perfect reference screenshots were available. The build was verified end-to-end in a browser during development: page render, mobile/tablet/desktop breakpoints, the lead form's validation and success/error states, and a real POST to `/api/lead` confirmed the round trip and file persistence.
 
-[ADD YOUR MANUAL CHANGES HERE]
+**What I reviewed, modified, or fixed manually:**
+- Diagnosed and fixed a lucide-react version issue that dropped brand icons — 
+  replaced with hand-rolled SVGs in Footer.tsx.
+- Identified that Turbopack was broken for Next.js 16 on my machine and directed 
+  the fix (pre-patching dev/build scripts with --webpack).
+- Verified the full build in-browser: checked responsiveness at 375/768/1024/1440px, 
+  tested the mobile hamburger menu, and manually submitted the lead form to confirm 
+  a real 201 response with data persisted to data/leads.json.
+- Caught that two navbar links ("Enterprise Solutions" and "Resources") weren't 
+  wired to any section, and directed Claude Code to anchor them correctly 
+  (#why-choose-us and #resources respectively) — then re-verified both worked 
+  on desktop and mobile.
+- Ran npm run lint and npx next build to confirm clean builds after every 
+  significant change.
+- Deployed to Vercel and tested the live form submission, since JSON-file 
+  persistence behaves differently on Vercel's serverless filesystem than locally.
 
 ## 4. Improvements With More Time
 
