@@ -19,12 +19,12 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 border-b border-slate-100 bg-white/80 backdrop-blur-md">
       <Container>
-        <nav className="flex h-16 items-center justify-between" aria-label="Main">
-          <a href="#" className="flex items-center gap-2 text-lg font-bold text-slate-900">
-            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-600 text-sm text-white">
+        <nav className="flex h-16 items-center justify-between gap-3" aria-label="Main">
+          <a href="#" className="flex min-w-0 shrink items-center gap-2 text-lg font-bold text-slate-900">
+            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-brand-600 text-sm text-white">
               A
             </span>
-            {SITE_NAME}
+            <span className="truncate">{SITE_NAME}</span>
           </a>
 
           <ul className="hidden items-center gap-8 lg:flex">
@@ -73,12 +73,12 @@ export default function Navbar() {
         role="dialog"
         aria-modal="true"
       >
-        <div className="flex items-center justify-between">
-          <span className="text-lg font-bold text-slate-900">{SITE_NAME}</span>
+        <div className="flex items-center justify-between gap-3">
+          <span className="truncate text-lg font-bold text-slate-900">{SITE_NAME}</span>
           <button
             type="button"
             onClick={() => setIsMenuOpen(false)}
-            className="rounded-md p-2 text-slate-700"
+            className="shrink-0 rounded-md p-2 text-slate-700"
             aria-label="Close menu"
           >
             <X className="h-6 w-6" />
